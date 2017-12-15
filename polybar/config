@@ -1,0 +1,177 @@
+;=====================================================
+;
+; Polybar config v1.0
+; by s1amber(Adrian Karbowniczyn)
+;
+; For more info visit: https://github.com/jaagr/polybar/
+;
+;=====================================================
+
+[colors]
+background = #232323
+background-alt = #444
+foreground = #F3E5DA
+foreground-alt = #555
+primary = #F3E5DA
+secondary = #e60053
+alert = #bd2c40
+
+[bar/main_bar]
+monitor = VGA-1
+width = 100%
+height = 31
+;offset-x = 200
+;offset-y = 50
+radius = 3.0
+fixed-center = true
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 2
+line-color = #f00
+
+border-size = 3
+border-color = #00000000
+
+padding-left = 1
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = Hack:size=10
+font-1 = FontAwesome:size=13
+font-3 = FontAwesome:size=10
+modules-left = i3
+modules-center = music-pad1 spotify music-pad2  
+modules-right = volume  date
+
+wm-restack = i3
+
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+
+separator= 
+
+[module/i3]
+type = internal/i3
+
+pin-workspaces = false
+
+;strip-wsnumbers = true
+
+index-sort = true
+
+enable-click = false
+
+enable-scroll = false
+
+wrapping-scroll = false
+
+fuzzy-match = true
+
+ws-icon-0 = 0;
+ws-icon-1 = 1; Term
+ws-icon-2 = 2; Web
+ws-icon-3 = 3; Code
+ws-icon-4 = 4; Music
+
+format = <label-state> <label-mode>
+
+label-active-font = 2
+
+label-mode = %mode%
+label-mode-padding = 2
+label-mode-background = #407055
+
+label-focused = %icon% 
+label-focused-foreground = #F3E5DA
+label-focused-background = #3f3f3f
+label-focused-underline = #fba922
+label-focused-padding = 2
+
+label-unfocused = %icon%
+label-unfocused-padding = 2
+
+label-visible = %icon%
+label-visible-underline = #555555
+label-visible-padding = 2
+
+label-urgent = %icon%
+label-urgent-foreground = #B7A439
+label-urgent-background =  #232323
+label-urgent-padding = 2
+
+
+[module/title]
+type = internal/xwindow
+format-foreground = #B0704A
+format-padding = 4
+
+label-maxlen = 100
+
+
+[module/date]
+type = internal/date
+interval = 5
+
+date = " %Y-%m-%d"
+time = %H:%M
+
+format-underline = #655347
+
+label = %date% %time%
+
+
+[module/spotify]
+type = custom/script
+exec = ~/.config/polybar/spotify.sh %artist% - %title%
+tail = true
+interval = 2
+format-prefix-foreground = #D5D0A7
+format-suffix-foreground = #D5D0A7
+format-prefix = " "
+format-suffix = " "
+format-overline = #2E2F35
+
+
+[module/volume]
+type = internal/volume
+
+format-volume =  <bar-volume>
+label-volume = 
+label-volume-foreground = ${root.foreground}
+
+format-muted-prefix = " "
+format-muted-foreground = ${colors.foreground-alt}
+label-muted = sound muted
+
+format-volume-underline = #55aa55
+bar-volume-width = 10
+bar-volume-foreground-0 = #55aa55
+bar-volume-foreground-1 = #55aa55
+bar-volume-foreground-2 = #55aa55
+bar-volume-foreground-3 = #55aa55
+bar-volume-foreground-4 = #55aa55
+bar-volume-foreground-5 = #f5a70a
+bar-volume-foreground-6 = #ff5555
+bar-volume-gradient = false
+bar-volume-indicator = 
+bar-volume-indicator-font = 3
+bar-volume-fill = 
+bar-volume-fill-font = 3
+bar-volume-empty = 
+bar-volume-empty-font = 3
+bar-volume-empty-foreground = ${colors.foreground-alt}
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
