@@ -1,5 +1,5 @@
 # s1amber dotfiles
-My dotfiles for a i3-gaps Arch Linux setup. Its my first rice ever, I spend on this current setup 
+My dotfiles for a i3-gaps Arch Linux setup
 
 ## Featuring
 
